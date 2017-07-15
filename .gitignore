@@ -1,0 +1,6 @@
+.vscode/
+config.json
+karbarban_bot
+*.log
+images/*.jpg
+*.sqlite3
