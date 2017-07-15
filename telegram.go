@@ -99,6 +99,12 @@ func telegram(bot *telebot.Bot) {
 						bot.SendMessage(sender, "خطایی رخ داده است", nil)
 						continue
 					}
+
+					if strings.HasPrefix(c.FullName, "Telegram: ") {
+						bot.SendMessage(sender, "کاربر یافت نشد", nil)
+						continue
+					}
+
 					err = downloadImage(c.ProfileLink, text)
 					if err != nil {
 						log.Printf("error on downloadImage %v", err)
