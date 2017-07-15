@@ -59,6 +59,10 @@ func telegram(bot *telebot.Bot) {
 			text = strings.ToLower(text)
 			text = strings.TrimSpace(text)
 
+			if strings.HasPrefix(text, "@") {
+				text = text[1:]
+			}
+
 			if text == "/start" {
 				bot.SendMessage(sender, "سلام ، به ربات نظاره گر تصاویر کاربران خوش آمدید ، با من میتونید هر کاربر رو توی تلگرام زیر نظر بگیرید ، کافیه اسمش رو بهم بدید تا من هر وقت عکس پروفایلش تغییر کرد به شما اطلاع بدم", nil)
 			} else if text == "/mylist" {
@@ -91,7 +95,7 @@ func telegram(bot *telebot.Bot) {
 					continue
 				}
 				if user.HasTarget(text) {
-					bot.SendMessage(sender, "شما قبلا این کاربر را زیر نظر گرفته بودید ، از لیست پاک کنم ؟", nil)
+					bot.SendMessage(sender, "شما قبلا این کاربر رو زیر نظر گرفتید ، با /mylist میتونید حذف کنید", nil)
 				} else {
 					c, err := searchUser(text)
 					if err != nil {

@@ -56,7 +56,7 @@ func (u *User) Exists() bool {
 
 func (u *User) HasTarget(username string) bool {
 	output := Target{}
-	db.Model(&Target{}).Find(&output, "username = ?", username)
+	db.Model(&Target{}).Find(&output, "username = ? AND user_id = ?", username, u.ID)
 	return output.ID > 0
 }
 
