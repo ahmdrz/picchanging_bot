@@ -8,7 +8,7 @@ import (
 )
 
 func init() {
-	file, err := os.OpenFile("karbarban.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	file, err := os.OpenFile("robot.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatal("Open log file", err)
 	}
